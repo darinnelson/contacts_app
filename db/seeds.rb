@@ -1,0 +1,5 @@
+Contact.create(first_name: "Daniel", last_name: "Webb", email: "daniel@gmail.com")
+Contact.create(first_name: "Jessica", last_name: "Willis", email: "daniel@gmail.com")
+Contact.create(first_name: "David", last_name: "Jones", email: "daniel@gmail.com")
+Contact.create(first_name: "Alex", last_name: "Pemberton", email: "daniel@gmail.com")
+Contact.create(first_name: "Sean", last_name: "Barker", email: "daniel@gmail.com")
