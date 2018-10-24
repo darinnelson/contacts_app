@@ -1,7 +1,7 @@
 class Api::ContactsController < ApplicationController
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.all.order(:id)
     render "index.json.jbuilder"
   end
 
@@ -11,6 +11,7 @@ class Api::ContactsController < ApplicationController
       last_name: params["last_name"],
       email: params["email"]
     )
+    @contact.save
     render "show.json.jbuilder"
   end
 
@@ -22,17 +23,14 @@ class Api::ContactsController < ApplicationController
   def update
     @contact = Contact.find_by(id: params[:id])
     @contact.id = params[:id] || @contact.id
-    @contact.first_name = params[:id] || @contact.first_name
-    @contact.last_name = params[:id] || @contact.last_name
-
-    if @contact.save
-      render "show.json.jbuilder" 
-    else 
-      render json: {errors: @contact.errors.full_messages}, status: :unprocessable_entity
-    end
+    @contact.first_name = params[:first_name] || @contact.first_name
+    @contact.last_name = params[:last_name] || @contact.last_name
+    @contact.email = params[:email] || @contact.email
+    @contact.save
+    render "show.json.jbuilder" 
   end
 
-  def delete
+  def destroy
     @contact = Contact.find_by(id: params[:id])
     @contact.destroy
     render json: {message: "Contact successfully deleted"}
