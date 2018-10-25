@@ -1,4 +1,3 @@
 json.id user.id
 json.name user.name
-json.password user.password
-json.password_confirmation user.password_confirmation
+json.password user.password_digest
