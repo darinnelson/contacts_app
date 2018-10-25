@@ -16,7 +16,7 @@ class Api::ContactsController < ApplicationController
       middle_name: params["middle_name"],
       last_name: params["last_name"],
       email: params["email"],
-      bio: params["bio"]
+      bio: params["bio"],
     )
 
     if @contact.save
