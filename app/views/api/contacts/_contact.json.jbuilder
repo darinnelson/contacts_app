@@ -6,4 +6,3 @@ json.email contact.email
 json.time contact.friendly_created_at
 json.full_name contact.full_name
 json.bio contact.bio
-json.user_id contact.user_id

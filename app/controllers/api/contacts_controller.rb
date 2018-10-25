@@ -1,7 +1,7 @@
 class Api::ContactsController < ApplicationController
 
   def index
-    @contacts = Contact.all
+    @contacts = current_user.contacts
     search_term = params[:search_term]
     if search_term
       @contacts = @contacts.where("first_name ILIKE ?", "%#{search_term}%")
@@ -17,6 +17,7 @@ class Api::ContactsController < ApplicationController
       last_name: params["last_name"],
       email: params["email"],
       bio: params["bio"],
+      user_id: current_user.id
     )
 
     if @contact.save
